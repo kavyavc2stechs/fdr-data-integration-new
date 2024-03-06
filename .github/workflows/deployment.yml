@@ -1,4 +1,4 @@
-name: Test-env-deployment
+name: Synapse Deployment
 on:
   pull_request:
     types:
