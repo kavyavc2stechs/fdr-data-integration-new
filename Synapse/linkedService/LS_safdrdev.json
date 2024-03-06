@@ -1,0 +1,39 @@
+{
+	"name": "LS_safdrdev",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"parameters": {
+			"PARAM_LS_STORAGE_ACC_URL": {
+				"type": "String",
+				"defaultValue": "https://safdrdev.dfs.core.windows.net/"
+			},
+			"PARAM_LS_STORAGE_ACC_KEY": {
+				"type": "string",
+				"defaultValue": "U4h9VNdX5bHMFSxTmniGMT75bHN5qr9LdmC9kR2BLWronVGlf/kfw2WLuiUKabVusU4XsPpQGf2N+AStJCic1w=="
+			},
+			"PARAM_LS_KV_SECRET_NAME": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "@{linkedService().PARAM_LS_STORAGE_ACC_URL}",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_FDR_DEV",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().PARAM_LS_KV_SECRET_NAME",
+					"type": "Expression"
+				}
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
