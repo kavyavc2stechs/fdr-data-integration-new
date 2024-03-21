@@ -60,7 +60,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "WaitYKP",
+						"name": "WaitYKPK",
 						"type": "Wait",
 						"dependsOn": [],
 						"userProperties": [],
